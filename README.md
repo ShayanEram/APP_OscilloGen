@@ -12,7 +12,7 @@
 ### Installing Necessary Packages
 
 1. Once in the project, go to `Tools` -> `NuGet Package Manager` -> `Manage NuGet Packages for Solution`.
-2. Click on `Browse` and search for **`system.io.ports`**, **`LibUsbDotNet`**, **`DeviceProgramming`**, **`LibUsbDfu`**.
+2. Click on `Browse` and search for **`system.io.ports`**, **`LibUsbDotNet`**, **`DeviceProgramming`**, **`LibUsbDfu`**, **`System.Managment`**.
 3. Select the first result.
 4. Click on the **Project** and **Software**.
 5. The install button will become available, click on it to install **version 9.0.0**.

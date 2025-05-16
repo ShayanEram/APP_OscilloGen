@@ -19,7 +19,7 @@ internal static class SerialConnection
 
     static SerialPort serialPort;
     private static int expectedResponseLength;
-    static byte[] handshake = { 0xBB, 0xCC };
+    private static readonly byte[] handshake = { 0xBB, 0xCC };
 
 
     public static bool SendHandShake(byte[] handshake)
