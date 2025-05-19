@@ -40,7 +40,6 @@
             panel2 = new Panel();
             panel4 = new Panel();
             FunGenPanel = new Panel();
-            StopButton = new Button();
             GenButton = new Button();
             OffsetTextBox = new TextBox();
             AmpliTextBox = new TextBox();
@@ -55,6 +54,9 @@
             NoiseRadioButton = new RadioButton();
             SigTypeLabel = new Label();
             OscillPanel = new Panel();
+            PlotPanel = new Panel();
+            StopButton = new Button();
+            StartButton = new Button();
             UpdatePanel = new Panel();
             FwVersionButton = new Button();
             FwFileButton = new Button();
@@ -66,8 +68,6 @@
             DateLabel = new Label();
             NameLabel = new Label();
             VersionLabel = new Label();
-            StartButton = new Button();
-            OStopButton = new Button();
             MenuPanel.SuspendLayout();
             TitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitlePictureBox).BeginInit();
@@ -106,6 +106,7 @@
             AboutButton.Text = "About";
             AboutButton.TextAlign = ContentAlignment.MiddleLeft;
             AboutButton.UseVisualStyleBackColor = true;
+            AboutButton.Click += AboutButton_Click;
             // 
             // UpdateButton
             // 
@@ -122,6 +123,7 @@
             UpdateButton.Text = "Update";
             UpdateButton.TextAlign = ContentAlignment.MiddleLeft;
             UpdateButton.UseVisualStyleBackColor = true;
+            UpdateButton.Click += UpdateButton_Click;
             // 
             // OscillButton
             // 
@@ -138,6 +140,7 @@
             OscillButton.Text = "Oscilloscope";
             OscillButton.TextAlign = ContentAlignment.MiddleLeft;
             OscillButton.UseVisualStyleBackColor = true;
+            OscillButton.Click += OscillButton_Click;
             // 
             // FuncGenButton
             // 
@@ -154,6 +157,7 @@
             FuncGenButton.Text = "Function Generator";
             FuncGenButton.TextAlign = ContentAlignment.MiddleLeft;
             FuncGenButton.UseVisualStyleBackColor = true;
+            FuncGenButton.Click += FuncGenButton_Click;
             // 
             // TitlePanel
             // 
@@ -204,9 +208,8 @@
             // 
             // FunGenPanel
             // 
-            FunGenPanel.BackColor = Color.Transparent;
+            FunGenPanel.BackColor = Color.White;
             FunGenPanel.BorderStyle = BorderStyle.FixedSingle;
-            FunGenPanel.Controls.Add(StopButton);
             FunGenPanel.Controls.Add(GenButton);
             FunGenPanel.Controls.Add(OffsetTextBox);
             FunGenPanel.Controls.Add(AmpliTextBox);
@@ -225,27 +228,22 @@
             FunGenPanel.Size = new Size(948, 724);
             FunGenPanel.TabIndex = 5;
             // 
-            // StopButton
-            // 
-            StopButton.Location = new Point(618, 627);
-            StopButton.Name = "StopButton";
-            StopButton.Size = new Size(112, 34);
-            StopButton.TabIndex = 13;
-            StopButton.Text = "Stop";
-            StopButton.UseVisualStyleBackColor = true;
-            // 
             // GenButton
             // 
+            GenButton.BackColor = Color.FromArgb(31, 30, 68);
+            GenButton.FlatStyle = FlatStyle.Flat;
+            GenButton.ForeColor = Color.White;
             GenButton.Location = new Point(756, 627);
             GenButton.Name = "GenButton";
             GenButton.Size = new Size(112, 34);
             GenButton.TabIndex = 12;
             GenButton.Text = "Generate";
-            GenButton.UseVisualStyleBackColor = true;
+            GenButton.UseVisualStyleBackColor = false;
+            GenButton.Click += GenButton_Click;
             // 
             // OffsetTextBox
             // 
-            OffsetTextBox.Location = new Point(399, 479);
+            OffsetTextBox.Location = new Point(399, 476);
             OffsetTextBox.Name = "OffsetTextBox";
             OffsetTextBox.Size = new Size(150, 31);
             OffsetTextBox.TabIndex = 11;
@@ -267,7 +265,7 @@
             // OffsetLabel
             // 
             OffsetLabel.AutoSize = true;
-            OffsetLabel.Location = new Point(99, 485);
+            OffsetLabel.Location = new Point(99, 479);
             OffsetLabel.Name = "OffsetLabel";
             OffsetLabel.Size = new Size(61, 25);
             OffsetLabel.TabIndex = 8;
@@ -349,7 +347,7 @@
             // SigTypeLabel
             // 
             SigTypeLabel.AutoSize = true;
-            SigTypeLabel.Location = new Point(99, 73);
+            SigTypeLabel.Location = new Point(97, 90);
             SigTypeLabel.Name = "SigTypeLabel";
             SigTypeLabel.Size = new Size(102, 25);
             SigTypeLabel.TabIndex = 0;
@@ -357,18 +355,53 @@
             // 
             // OscillPanel
             // 
-            OscillPanel.BackColor = Color.Transparent;
+            OscillPanel.BackColor = Color.White;
             OscillPanel.BorderStyle = BorderStyle.FixedSingle;
-            OscillPanel.Controls.Add(OStopButton);
+            OscillPanel.Controls.Add(PlotPanel);
+            OscillPanel.Controls.Add(StopButton);
             OscillPanel.Controls.Add(StartButton);
             OscillPanel.Location = new Point(1216, 10);
             OscillPanel.Name = "OscillPanel";
             OscillPanel.Size = new Size(948, 724);
             OscillPanel.TabIndex = 6;
             // 
+            // PlotPanel
+            // 
+            PlotPanel.BackColor = Color.FromArgb(192, 192, 255);
+            PlotPanel.Location = new Point(20, 18);
+            PlotPanel.Name = "PlotPanel";
+            PlotPanel.Size = new Size(909, 579);
+            PlotPanel.TabIndex = 2;
+            // 
+            // StopButton
+            // 
+            StopButton.BackColor = Color.FromArgb(31, 30, 68);
+            StopButton.FlatStyle = FlatStyle.Flat;
+            StopButton.ForeColor = Color.White;
+            StopButton.Location = new Point(618, 641);
+            StopButton.Name = "StopButton";
+            StopButton.Size = new Size(112, 34);
+            StopButton.TabIndex = 1;
+            StopButton.Text = "Stop";
+            StopButton.UseVisualStyleBackColor = false;
+            StopButton.Click += StopButton_Click;
+            // 
+            // StartButton
+            // 
+            StartButton.BackColor = Color.FromArgb(31, 30, 68);
+            StartButton.FlatStyle = FlatStyle.Flat;
+            StartButton.ForeColor = Color.White;
+            StartButton.Location = new Point(756, 641);
+            StartButton.Name = "StartButton";
+            StartButton.Size = new Size(112, 34);
+            StartButton.TabIndex = 0;
+            StartButton.Text = "Start";
+            StartButton.UseVisualStyleBackColor = false;
+            StartButton.Click += StartButton_Click;
+            // 
             // UpdatePanel
             // 
-            UpdatePanel.BackColor = Color.Transparent;
+            UpdatePanel.BackColor = Color.White;
             UpdatePanel.BorderStyle = BorderStyle.FixedSingle;
             UpdatePanel.Controls.Add(FwVersionButton);
             UpdatePanel.Controls.Add(FwFileButton);
@@ -383,21 +416,29 @@
             // 
             // FwVersionButton
             // 
+            FwVersionButton.BackColor = Color.FromArgb(31, 30, 68);
+            FwVersionButton.FlatStyle = FlatStyle.Flat;
+            FwVersionButton.ForeColor = Color.White;
             FwVersionButton.Location = new Point(797, 343);
             FwVersionButton.Name = "FwVersionButton";
             FwVersionButton.Size = new Size(112, 34);
             FwVersionButton.TabIndex = 5;
             FwVersionButton.Text = "Update";
-            FwVersionButton.UseVisualStyleBackColor = true;
+            FwVersionButton.UseVisualStyleBackColor = false;
+            FwVersionButton.Click += FwVersionButton_Click;
             // 
             // FwFileButton
             // 
+            FwFileButton.BackColor = Color.FromArgb(31, 30, 68);
+            FwFileButton.FlatStyle = FlatStyle.Flat;
+            FwFileButton.ForeColor = Color.White;
             FwFileButton.Location = new Point(797, 144);
             FwFileButton.Name = "FwFileButton";
             FwFileButton.Size = new Size(112, 34);
             FwFileButton.TabIndex = 4;
             FwFileButton.Text = "Browse";
-            FwFileButton.UseVisualStyleBackColor = true;
+            FwFileButton.UseVisualStyleBackColor = false;
+            FwFileButton.Click += FwFileButton_Click;
             // 
             // FwVersionTextBox
             // 
@@ -433,7 +474,7 @@
             // 
             // AboutPanel
             // 
-            AboutPanel.BackColor = Color.Transparent;
+            AboutPanel.BackColor = Color.White;
             AboutPanel.BorderStyle = BorderStyle.FixedSingle;
             AboutPanel.Controls.Add(DateLabel);
             AboutPanel.Controls.Add(NameLabel);
@@ -470,24 +511,6 @@
             VersionLabel.TabIndex = 0;
             VersionLabel.Text = "Version #";
             // 
-            // StartButton
-            // 
-            StartButton.Location = new Point(756, 641);
-            StartButton.Name = "StartButton";
-            StartButton.Size = new Size(112, 34);
-            StartButton.TabIndex = 0;
-            StartButton.Text = "Start";
-            StartButton.UseVisualStyleBackColor = true;
-            // 
-            // OStopButton
-            // 
-            OStopButton.Location = new Point(618, 641);
-            OStopButton.Name = "OStopButton";
-            OStopButton.Size = new Size(112, 34);
-            OStopButton.TabIndex = 1;
-            OStopButton.Text = "Stop";
-            OStopButton.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -501,8 +524,10 @@
             Controls.Add(MenuPanel);
             Controls.Add(FunGenPanel);
             Controls.Add(AboutPanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "OscilloGen";
+            Load += MainForm_Load;
             MenuPanel.ResumeLayout(false);
             TitlePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TitlePictureBox).EndInit();
@@ -555,7 +580,7 @@
         private TextBox AmpliTextBox;
         private TextBox FreqTextBox;
         private Button StopButton;
-        private Button OStopButton;
         private Button StartButton;
+        private Panel PlotPanel;
     }
 }

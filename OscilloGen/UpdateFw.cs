@@ -6,11 +6,11 @@ using LibUsbDfu;
 
 namespace OscilloGen;
 
-internal class Update
+internal class UpdateFw
 {
     private static readonly string password = "admin";
-    private static readonly int vendorId = 0x0483;       // STMicroelectronics
-    private static readonly int productId = 0xdf11;      // DFU
+    private static readonly int vendorId = About.VENDOR_ID;
+    private static readonly int productId = About.PRODUCT_ID;
 
     public static bool CheckPassword(string enteredPassword)
     {
