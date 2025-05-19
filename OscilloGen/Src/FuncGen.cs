@@ -17,6 +17,24 @@ internal class FuncGen
     const float MIN_OFFSET = 0.0F;
     const float MAX_OFFSET = 360.0F;
 
+    public struct SignalType
+    {
+        public bool noise;
+        public bool sine;
+        public bool square;
+        public bool triangle;
+        public bool saw;
+
+        public SignalType()
+        {
+            noise = false;
+            sine = false;
+            square = false;
+            triangle = false;
+            saw = false;
+        }
+    }
+
     public static float CheckFrequency(float frequency)
     {
         if (frequency < MIN_FREQUENCY)
@@ -58,4 +76,17 @@ internal class FuncGen
         return offset;
     }
 
+    public static int GetSignalType(SignalType type)
+    {
+        if (type.noise)
+            return 0;
+        else if (type.sine)
+            return 1;
+        else if (type.square)
+            return 2;
+        else if (type.triangle)
+            return 3;
+        else
+            return 4;
+    }
 }

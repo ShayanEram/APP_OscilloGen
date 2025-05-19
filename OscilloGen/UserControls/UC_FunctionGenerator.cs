@@ -4,24 +4,6 @@ namespace OscilloGen.UserControls;
 
 public partial class UC_FunctionGenerator : UserControl
 {
-    private struct SignalType
-    {
-        public bool noise;
-        public bool sine;
-        public bool square;
-        public bool triangle;
-        public bool saw;
-
-        public SignalType()
-        {
-            noise = false;
-            sine = false;
-            square = false;
-            triangle = false;
-            saw = false;
-        }
-    }
-
     public UC_FunctionGenerator()
     {
         InitializeComponent();
@@ -29,10 +11,7 @@ public partial class UC_FunctionGenerator : UserControl
 
     private void GenButton_Click(object sender, EventArgs e)
     {
-        SignalType type = new();
-        float frequency = 0;
-        float amplitude = 0;
-        float offset = 0;
+        FuncGen.SignalType type = new();
 
         // Radio btns
         if (NoiseRadioButton.Checked)
@@ -62,22 +41,24 @@ public partial class UC_FunctionGenerator : UserControl
         }
 
         // Text boxes
-        if (float.TryParse(FreqTextBox.Text, out frequency))
+        if (float.TryParse(FreqTextBox.Text, out float frequency))
         {
             frequency = FuncGen.CheckFrequency(frequency);
             FreqTextBox.Text = frequency.ToString();
         }
 
-        if (float.TryParse(AmpliTextBox.Text, out amplitude))
+        if (float.TryParse(AmpliTextBox.Text, out float amplitude))
         {
             amplitude = FuncGen.CheckAmplitude(amplitude);
             AmpliTextBox.Text = amplitude.ToString();
         }
 
-        if (float.TryParse(OffsetTextBox.Text, out offset))
+        if (float.TryParse(OffsetTextBox.Text, out float offset))
         {
             offset = FuncGen.CheckOffset(offset);
             OffsetTextBox.Text = offset.ToString();
         }
+
+        SerialProtocol.EncodeSendData(FuncGen.GetSignalType(type), frequency, amplitude, offset);
     }
 }

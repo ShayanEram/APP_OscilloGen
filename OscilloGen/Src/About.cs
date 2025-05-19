@@ -13,5 +13,5 @@ internal class About
     public static readonly string Description = "OscilloGen";
 
     public static readonly int VENDOR_ID = 0x0483;       // STMicroelectronics
-    public static readonly int PRODUCT_ID = 0xdf11;      // DFU
+    public static readonly int DFU_ID = 0xdf11;         // DFU
 }

@@ -17,10 +17,31 @@ internal static class SerialConnection
     private const string VENDOR_ID = "0483";               // Vendor ID for STMicroelectronics
     private const string PRODUCT_ID = "5740";              // Product ID for STM32 device
 
-    static SerialPort serialPort;
+    public static SerialPort serialPort;
     private static int expectedResponseLength;
-    private static readonly byte[] handshake = { 0xBB, 0xCC };
+    private static readonly byte[] handshake = { 0xFF, 0xAA, 0xFF };
+    private static bool isDeviceConnected = false;
 
+    public static bool ConnectToDevice()
+    {
+        string comPort = GetComPortByDeviceName(VENDOR_ID, PRODUCT_ID);
+        if (comPort != null)
+        {
+            bool opened = OpenSerialPort(comPort);
+
+            if (!opened)
+            {
+                return false;
+            }
+            isDeviceConnected = SendHandShake(handshake);
+            return true;
+        }
+        else
+        {
+            isDeviceConnected = false;
+            return false;
+        }
+    }
 
     public static bool SendHandShake(byte[] handshake)
     {
@@ -79,14 +100,14 @@ internal static class SerialConnection
         }
     }
 
-    public static int ReceiveData(byte[] buffer, int expectedLength, out string error)
+    public static int ReceiveData(byte[] buffer, out string error)
     {
         error = "";
         int bytesRead = 0;
 
         try
         {
-            bytesRead = serialPort.Read(buffer, 0, expectedLength);
+            bytesRead = serialPort.Read(buffer, 0, buffer.Length);
         }
         catch (TimeoutException ex)
         {
@@ -130,5 +151,8 @@ internal static class SerialConnection
 
         return null; // Device not found
     }
+}
 
+public class DataToReceive()
+{
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             MenuPanel = new Panel();
+            ConnectionLabel = new Label();
             AboutButton = new Button();
             UpdateButton = new Button();
             OscillButton = new Button();
@@ -50,6 +51,7 @@
             // MenuPanel
             // 
             MenuPanel.BackColor = Color.FromArgb(31, 30, 68);
+            MenuPanel.Controls.Add(ConnectionLabel);
             MenuPanel.Controls.Add(AboutButton);
             MenuPanel.Controls.Add(UpdateButton);
             MenuPanel.Controls.Add(OscillButton);
@@ -60,6 +62,16 @@
             MenuPanel.Name = "MenuPanel";
             MenuPanel.Size = new Size(220, 1024);
             MenuPanel.TabIndex = 0;
+            // 
+            // ConnectionLabel
+            // 
+            ConnectionLabel.AutoSize = true;
+            ConnectionLabel.Dock = DockStyle.Bottom;
+            ConnectionLabel.Location = new Point(0, 999);
+            ConnectionLabel.Name = "ConnectionLabel";
+            ConnectionLabel.Size = new Size(102, 25);
+            ConnectionLabel.TabIndex = 6;
+            ConnectionLabel.Text = "Connection";
             // 
             // AboutButton
             // 
@@ -209,7 +221,9 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "OscilloGen";
+            Load += MainForm_Load;
             MenuPanel.ResumeLayout(false);
+            MenuPanel.PerformLayout();
             TitlePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TitlePictureBox).EndInit();
             MainPanel.ResumeLayout(false);
@@ -231,5 +245,6 @@
         private Panel panel4;
         private Panel MainPanel;
         private Label WelcomeLabel;
+        private Label ConnectionLabel;
     }
 }

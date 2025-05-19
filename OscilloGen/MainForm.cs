@@ -1,3 +1,4 @@
+using OscilloGen.Src;
 using OscilloGen.UserControls;
 
 namespace OscilloGen;
@@ -7,6 +8,22 @@ public partial class MainForm : Form
     public MainForm()
     {
         InitializeComponent();
+    }
+
+    private void MainForm_Load(object sender, EventArgs e)
+    {
+        bool isConnected = SerialConnection.ConnectToDevice();
+
+        if (isConnected)
+        {
+            ConnectionLabel.Text = "Connected";
+            ConnectionLabel.ForeColor = Color.Green;
+        }
+        else
+        {
+            ConnectionLabel.Text = "Not Connected";
+            ConnectionLabel.ForeColor = Color.Red;
+        }
     }
 
     private void FuncGenButton_Click(object sender, EventArgs e)
@@ -35,4 +52,6 @@ public partial class MainForm : Form
         MainPanel.Controls.Add(page);
         page.Dock = DockStyle.Fill;
     }
+
+
 }

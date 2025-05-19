@@ -10,7 +10,7 @@ internal class UpdateFw
 {
     private static readonly string password = "admin";
     private static readonly int vendorId = About.VENDOR_ID;
-    private static readonly int productId = About.PRODUCT_ID;
+    private static readonly int productId = About.DFU_ID;
 
     public static bool CheckPassword(string enteredPassword)
     {
