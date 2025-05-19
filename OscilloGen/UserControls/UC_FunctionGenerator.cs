@@ -1,4 +1,6 @@
-﻿namespace OscilloGen.UserControls;
+﻿using OscilloGen.Src;
+
+namespace OscilloGen.UserControls;
 
 public partial class UC_FunctionGenerator : UserControl
 {

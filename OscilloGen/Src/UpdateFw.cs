@@ -4,7 +4,7 @@ using DeviceProgramming.Dfu;
 using DeviceProgramming.FileFormat;
 using LibUsbDfu;
 
-namespace OscilloGen;
+namespace OscilloGen.Src;
 
 internal class UpdateFw
 {

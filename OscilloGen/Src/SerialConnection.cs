@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Management;
 
-namespace OscilloGen;
+namespace OscilloGen.Src;
 
 internal static class SerialConnection
 {
