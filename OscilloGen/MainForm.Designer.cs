@@ -190,9 +190,9 @@
             // 
             // MainPanel
             // 
+            MainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MainPanel.BackColor = Color.White;
             MainPanel.Controls.Add(WelcomeLabel);
-            MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(220, 10);
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1668, 1004);
@@ -200,6 +200,7 @@
             // 
             // WelcomeLabel
             // 
+            WelcomeLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             WelcomeLabel.AutoSize = true;
             WelcomeLabel.Font = new Font("BankGothic Md BT", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             WelcomeLabel.Location = new Point(580, 465);
@@ -219,6 +220,7 @@
             Controls.Add(panel1);
             Controls.Add(MenuPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(1920, 1080);
             Name = "MainForm";
             Text = "OscilloGen";
             Load += MainForm_Load;
