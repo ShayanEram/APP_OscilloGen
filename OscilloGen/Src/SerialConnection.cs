@@ -152,7 +152,3 @@ internal static class SerialConnection
         return null; // Device not found
     }
 }
-
-public class DataToReceive()
-{
-}

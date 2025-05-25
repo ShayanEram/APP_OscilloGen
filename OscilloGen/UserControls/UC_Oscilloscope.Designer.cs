@@ -31,6 +31,8 @@
             PlotPanel = new Panel();
             StopButton = new Button();
             StartButton = new Button();
+            FftButton = new Button();
+            FilterButton = new Button();
             SuspendLayout();
             // 
             // PlotPanel
@@ -67,10 +69,38 @@
             StartButton.UseVisualStyleBackColor = false;
             StartButton.Click += StartButton_Click;
             // 
+            // FftButton
+            // 
+            FftButton.BackColor = Color.FromArgb(31, 30, 68);
+            FftButton.FlatStyle = FlatStyle.Flat;
+            FftButton.ForeColor = Color.White;
+            FftButton.Location = new Point(1355, 217);
+            FftButton.Name = "FftButton";
+            FftButton.Size = new Size(112, 34);
+            FftButton.TabIndex = 6;
+            FftButton.Text = "FFT";
+            FftButton.UseVisualStyleBackColor = false;
+            FftButton.Click += FftButton_Click;
+            // 
+            // FilterButton
+            // 
+            FilterButton.BackColor = Color.FromArgb(31, 30, 68);
+            FilterButton.FlatStyle = FlatStyle.Flat;
+            FilterButton.ForeColor = Color.White;
+            FilterButton.Location = new Point(1355, 321);
+            FilterButton.Name = "FilterButton";
+            FilterButton.Size = new Size(112, 34);
+            FilterButton.TabIndex = 7;
+            FilterButton.Text = "Filter";
+            FilterButton.UseVisualStyleBackColor = false;
+            FilterButton.Click += FilterButton_Click;
+            // 
             // UC_Oscilloscope
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(FilterButton);
+            Controls.Add(FftButton);
             Controls.Add(PlotPanel);
             Controls.Add(StopButton);
             Controls.Add(StartButton);
@@ -84,5 +114,7 @@
         private Panel PlotPanel;
         private Button StopButton;
         private Button StartButton;
+        private Button FftButton;
+        private Button FilterButton;
     }
 }

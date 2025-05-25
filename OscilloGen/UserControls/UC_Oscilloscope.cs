@@ -24,7 +24,17 @@ public partial class UC_Oscilloscope : UserControl
 
     private void StopButton_Click(object sender, EventArgs e)
     {
-        SerialProtocol.StopOscilloscope();
+        SerialProtocol.EncodeSendOscilloscope(true, false, false);
+    }
+
+    private void FftButton_Click(object sender, EventArgs e)
+    {
+        SerialProtocol.EncodeSendOscilloscope(false, true, false);
+    }
+
+    private void FilterButton_Click(object sender, EventArgs e)
+    {
+        SerialProtocol.EncodeSendOscilloscope(false, false, true);
     }
 
     private void InitializeTimer()
@@ -41,6 +51,8 @@ public partial class UC_Oscilloscope : UserControl
         FormsPlot.Plot.Add.Signal(SerialProtocol.signalBuffer);
         FormsPlot.Refresh();
     }
+
+
 }
 
 
