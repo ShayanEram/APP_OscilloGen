@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OscilloGen.Src;
 
-internal class FuncGen
+public class FuncGen
 {
     const float MIN_FREQUENCY = 0.0F;
     const float MAX_FREQUENCY = 1000.0F;

@@ -1,15 +1,15 @@
 using NUnit.Framework;
-using OscilloGen;
+using OscilloGen.Src;
 
 namespace UTests;
 
 [TestFixture]
 public class FuncGenTests
 {
-    private const float MIN_FREQUENCY = 20.0f; // Replace with actual value from FuncGen.cs
-    private const float MAX_FREQUENCY = 20000.0f; // Replace with actual value from FuncGen.cs
-    private const float MIN_AMPLITUDE = 0.0f; // Replace with actual value from FuncGen.cs
-    private const float MAX_AMPLITUDE_VP = 5.0f; // Replace with actual value from FuncGen.cs
+    private const float MIN_FREQUENCY = 20.0f;
+    private const float MAX_FREQUENCY = 20000.0f;
+    private const float MIN_AMPLITUDE = 0.0f;
+    private const float MAX_AMPLITUDE_VP = 5.0f;
 
     [Test]
     public void CheckFrequency_ReturnsMinFrequency_WhenBelowMin()

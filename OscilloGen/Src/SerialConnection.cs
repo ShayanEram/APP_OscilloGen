@@ -8,7 +8,7 @@ using System.Management;
 
 namespace OscilloGen.Src;
 
-internal static class SerialConnection
+public static class SerialConnection
 {
     private const int TIMEOUT = 1000; // ms
     private const int DELAY = 100; // ms
@@ -121,7 +121,7 @@ internal static class SerialConnection
         return bytesRead;
     }
 
-    static string GetComPortByDeviceName(string vendorId, string productId)
+    public static string GetComPortByDeviceName(string vendorId, string productId)
     {
         try
         {

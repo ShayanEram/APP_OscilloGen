@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Moq;
 using System.IO.Ports;
-using OscilloGen;
+using OscilloGen.Src;
 
 namespace UTests;
 

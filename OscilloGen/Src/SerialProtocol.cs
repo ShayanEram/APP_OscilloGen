@@ -2,7 +2,7 @@
 
 namespace OscilloGen.Src;
 
-internal class SerialProtocol
+public class SerialProtocol
 {
     private const int SEND_DATA_SIZE = 15;
     private const int RECEIVE_DATA_SIZE = 1024;

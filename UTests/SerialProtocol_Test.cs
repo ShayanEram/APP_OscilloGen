@@ -2,21 +2,20 @@ using NUnit.Framework;
 using Moq;
 using OscilloGen.Src;
 using System;
-using OscilloGen;
 
 namespace UTests;
 
 [TestFixture]
 public class SerialProtocolTests
 {
-    private Mock<ISerialConnection> _mockSerialConnection;
+    private Mock<ISerialConnectionWrapper> _mockSerialConnection;
 
     [SetUp]
     public void SetUp()
     {
         // Mock the SerialConnection to simulate hardware behavior
-        _mockSerialConnection = new Mock<ISerialConnection>();
-        SerialConnection.SendData = _mockSerialConnection.Object.SendData;
+        _mockSerialConnection = new Mock<ISerialConnectionWrapper>();
+        _mockSerialConnection.Setup(x => x.SendData(It.IsAny<byte[]>(), out It.Ref<string>.IsAny)).Verifiable();
     }
 
     [Test]
@@ -80,7 +79,15 @@ public class SerialProtocolTests
     }
 }
 
-public interface ISerialConnection
+public interface ISerialConnectionWrapper
 {
     void SendData(byte[] data, out string error);
+}
+
+public class SerialConnectionWrapper : ISerialConnectionWrapper
+{
+    public void SendData(byte[] data, out string error)
+    {
+        SerialConnection.SendData(data, out error);
+    }
 }
